@@ -2,7 +2,9 @@
   "Playwright": {
     "HeadLess": false,
     "Product": "InfectionTracker",
-    "RootUrl": "http://localhost:4200",
-    "SlowMo": 0
+    "RootUrl": "http://ynf2601mdbdev:10000",
+    "SlowMo": 0,
+    "UserName": "TECH",
+    "Password": "Admin"
   }
 }

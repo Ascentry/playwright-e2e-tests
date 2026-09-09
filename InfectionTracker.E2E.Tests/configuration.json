@@ -1,0 +1,10 @@
+{
+  "Playwright": {
+    "HeadLess": false,
+    "Product": "InfectionTracker",
+    "RootUrl": "http://ynf2601mdbtest:10000",
+    "SlowMo": 0,
+    "UserName": "USERNAME",
+    "Password": "PASSWORD"
+  }
+}
