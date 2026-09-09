@@ -173,13 +173,13 @@ namespace Ascentry.E2E.Pages.Publications
                 var cellContents = await row.Locator("td.row-detail").AllInnerTextsAsync();
                 var rowDetail = new PublicationEventDetailsRow()
                 {
-                    SpecimenNumber = cellContents[(int)PublicationEventColumnEnum.SpecimenNumber],
-                    CollectionDate = cellContents[(int)PublicationEventColumnEnum.CollectionDate],
-                    Patient = cellContents[(int)PublicationEventColumnEnum.Patient],
-                    EventName = cellContents[(int)PublicationEventColumnEnum.EventName],
-                    EventEstablishment = cellContents[(int)PublicationEventColumnEnum.EventEstablishment],
-                    EventDepartment = cellContents[(int)PublicationEventColumnEnum.EventDepartment],
-                    EventCareUnit = cellContents[(int)PublicationEventColumnEnum.EventCareUnit]
+                    SpecimenNumber = cellContents[(int)PublicationEventColumnEnum.SpecimenNumber].Trim(),
+                    CollectionDate = cellContents[(int)PublicationEventColumnEnum.CollectionDate].Trim(),
+                    Patient = cellContents[(int)PublicationEventColumnEnum.Patient].Trim(),
+                    EventName = cellContents[(int)PublicationEventColumnEnum.EventName].Trim(),
+                    EventEstablishment = cellContents[(int)PublicationEventColumnEnum.EventEstablishment].Trim(),
+                    EventDepartment = cellContents[(int)PublicationEventColumnEnum.EventDepartment].Trim(),
+                    EventCareUnit = cellContents[(int)PublicationEventColumnEnum.EventCareUnit].Trim()
                 };
 
                 eventDetailsRowResults.Add(rowDetail);

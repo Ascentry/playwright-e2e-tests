@@ -15,8 +15,8 @@ namespace Ascentry.E2E.Tests.Sandbox
         [Fact(DisplayName = "Get publication ORU events with  filter parameters: publication name, specimen number")]
         public async Task Should_Get_Generated_ORU_Event_With_PublicationName_And_SpecimenNumber()
         {
-            string specimenNumber = "100027471156";
-            string publicationName = "Publication JMC workList ^*:\"/\\?|<>";
+            string specimenNumber = "100034883883";
+            string publicationName = "Bulletin épidémiologique";
             var rows = await GeneratePublicationPage.GetPublicationEventRows(PublicationEventContextTypeEnum.ORU, publicationName, specimenNumber);
             Assert.Single(rows);
             Assert.Equal(specimenNumber, rows[0].SpecimenNumber);

@@ -1,8 +1,6 @@
 ﻿
 using Ascentry.E2E.Contracts.Interfaces;
 using Ascentry.E2E.Contracts.Layout;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace Ascentry.E2E.Testing
 {
