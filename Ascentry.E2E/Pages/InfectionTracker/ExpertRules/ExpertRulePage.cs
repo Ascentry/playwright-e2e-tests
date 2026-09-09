@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ascentry.E2E.Pages.ExpertRules
+namespace Ascentry.E2E.Pages.InfectionTracker.ExpertRules
 {
     internal class ExpertRulePage : PageBase, IExpertRulePage
     {
@@ -68,7 +68,7 @@ namespace Ascentry.E2E.Pages.ExpertRules
                 await contextInput.FillAsync(contextValue);
             }
 
-            var validateButton = Page.Locator("nina-expert-rule-menu byg-button:has(label:has-text('Valider'))");
+            var validateButton = Page.Locator($"nina-expert-rule-menu byg-button:has(label:has-text('{GetLabel(TranslationEnum.Validate)}'))");
             await Assertions.Expect(validateButton).ToBeEnabledAsync();
             await validateButton.ClickAsync();
 

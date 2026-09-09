@@ -1555,7 +1555,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         BirthName = 410,
         /// <summary>
-        /// Pid
+        /// Ipp
         /// </summary>
         Pid = 411,
         /// <summary>
@@ -4743,7 +4743,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         AssociatedFiles = 1207,
         /// <summary>
-        /// Préfixer le pid avec le numéro d'origine de la demande
+        /// Préfixer l'ipp avec le numéro d'origine de la demande
         /// </summary>
         PrefixPidWithOriginalOrderNumber = 1208,
         /// <summary>
@@ -18183,7 +18183,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         ImhDocuments = 4567,
         /// <summary>
-        /// Pid
+        /// Ipp
         /// </summary>
         Pid_6 = 4568,
         /// <summary>
@@ -19103,7 +19103,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         Compl = 4797,
         /// <summary>
-        /// Pid 2
+        /// Ipp 2
         /// </summary>
         AddtnlPid = 4798,
         /// <summary>
@@ -37827,7 +37827,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         PatientPidHasNotBeenTransmitted = 9604,
         /// <summary>
-        /// Le pid du patient doit être renseigné, arrêt de l'intégration de la demande
+        /// L'ipp du patient doit être renseigné, arrêt de l'intégration de la demande
         /// </summary>
         ThePatientSPidMustBeEnteredStopIntegrationOfTheReq = 9605,
         /// <summary>
@@ -37871,7 +37871,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         ChangeOfPatientInsNumberNewValue0MinusOldValue1 = 9615,
         /// <summary>
-        /// Recherche du patient en base de données (pid : {0} - laboratoire d'origine {1})
+        /// Recherche du patient en base de données (ipp : {0} - laboratoire d'origine {1})
         /// </summary>
         SearchForThePatientInTheDatabasePid0MinusLaborator = 9616,
         /// <summary>
@@ -38643,7 +38643,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         At = 9808,
         /// <summary>
-        /// À valider
+        /// A valider
         /// </summary>
         ToValidate = 9809,
         /// <summary>
@@ -40187,7 +40187,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         _0 = 10194,
         /// <summary>
-        /// Rechercher par pid de patient
+        /// Rechercher par ipp de patient
         /// </summary>
         SearchByPatientPid = 10195,
         /// <summary>
@@ -42527,7 +42527,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         RecognizingCriteriasForAnIncompletePatient = 10780,
         /// <summary>
-        /// Contenu du pid
+        /// Contenu de l'ipp
         /// </summary>
         ContentOfPid = 10781,
         /// <summary>
@@ -42779,7 +42779,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         Output = 10843,
         /// <summary>
-        /// Mise à jour patient effectuée : pid : {0}, ins : {1}, {2}/{3}/{4}/{5}/{6} -> ins : {7}, {8}/{9}/{10}/{11}/{12}
+        /// Mise à jour patient effectuée : ipp : {0}, ins : {1}, {2}/{3}/{4}/{5}/{6} -> ins : {7}, {8}/{9}/{10}/{11}/{12}
         /// </summary>
         MiseAJourPatientEffectueEPid0Ins12Divide3Divide4Di = 10844,
         /// <summary>
@@ -42903,7 +42903,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         Exportdivideprint = 10874,
         /// <summary>
-        /// Changement du pid du patient : nouvelle valeur : {0} - ancienne valeur : {1}
+        /// Changement de l'ipp du patient : nouvelle valeur : {0} - ancienne valeur : {1}
         /// </summary>
         ChangeOfThePatientSPidNewValue0MinusOldValue1 = 10875,
         /// <summary>
@@ -48419,7 +48419,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         StatelessIntegration = 12257,
         /// <summary>
-        /// Le patient id du sample (stt) n'est pas renseigné ou invalide, arrêt de l'intégration de la demande
+        /// L'ipp du patient associé au tube (stt) n'est pas renseigné ou invalide, arrêt de l'intégration de la demande
         /// </summary>
         ThePatientIdOfTheSampleSttIsNotFilledInOrIsInvalid = 12258,
         /// <summary>
@@ -49163,7 +49163,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         WarningNoPatientReportHasBeenFoundForSample0OnBenc = 12443,
         /// <summary>
-        /// Patient ({0}) - pid '{1}' - nom '{2}' - prénom '{3}' - date de naissance '{4}'
+        /// Patient ({0}) - ipp '{1}' - nom '{2}' - prénom '{3}' - date de naissance '{4}'
         /// </summary>
         Patient0MinusPid1MinusLastName2MinusFirstName3Minu = 12444,
         /// <summary>
@@ -50251,7 +50251,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         OnlyContactEventsAlreadySetAreAvailabledotPleaseSe = 12715,
         /// <summary>
-        /// Pid inconnu
+        /// Ipp inconnu
         /// </summary>
         PidUnknown = 12716,
         /// <summary>
@@ -52555,7 +52555,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         TheScannedSampleDoesNotExist = 13291,
         /// <summary>
-        /// Au moins une des informations patient n'est pas rensigné
+        /// Au moins une des informations patient n'est pas renseignée
         /// </summary>
         AtLeastOneElementOfThePatientSInformationIsMissing = 13292,
         /// <summary>
@@ -54803,7 +54803,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         RefreshTheConfigurationCacheToApplyTheLatestChange = 13853,
         /// <summary>
-        /// Durée de conservation des logs
+        /// Durée de conservation
         /// </summary>
         LogRetentionPeriod = 13854,
         /// <summary>
@@ -56647,7 +56647,7 @@ namespace Ascentry.E2E.Contracts.Enums
         /// </summary>
         ExportingPatients = 14314,
         /// <summary>
-        /// Export des cas groupés
+        /// Exporter les cas groupés
         /// </summary>
         ExportingGroupedCases = 14315,
         /// <summary>
@@ -57378,5 +57378,125 @@ namespace Ascentry.E2E.Contracts.Enums
         /// Suppression de l'établissement connecté : {0}
         /// </summary>
         DeleteTheConnectedFacility0 = 14497,
-      }
+        /// <summary>
+        /// Temps coagulation (min)
+        /// </summary>
+        ClottingTimeMin = 14498,
+        /// <summary>
+        /// Un clotting time de {0} minutes a été ajouté
+        /// </summary>
+        AClottingTimeOf0HasBeenAdded = 14499,
+        /// <summary>
+        /// Clotting time buffer
+        /// </summary>
+        ClottingTimeBuffer = 14500,
+        /// <summary>
+        /// Des chaînes automatisées sont encore associées au laboratoire
+        /// </summary>
+        AutomationTracksAreStillAssociatedWithTheLaborator = 14501,
+        /// <summary>
+        /// Videz le portoir pour remettre à zéro le compteur de charge
+        /// </summary>
+        ClearTheRackToResetTheExitModuleLoadCounter = 14502,
+        /// <summary>
+        /// Des modules de chaînes automatisées sont encore associés à l'instrument
+        /// </summary>
+        AutomationTrackModulesAreStillAssociatedWithTheIns = 14503,
+        /// <summary>
+        /// Le système doit disposer des droits d’écriture dans le répertoire afin d’y déposer les fichiers
+        /// </summary>
+        InfectionTrackerMustHaveWritePermissionsForTheDire = 14504,
+        /// <summary>
+        /// Seules les analyses à l'état "à valider" sont concernées
+        /// </summary>
+        OnlyTestsWithTheStatusToValidateAreAffected = 14505,
+        /// <summary>
+        /// Êtes-vous certain de vouloir valider cette/ces valeur(s) en erreur(s)?
+        /// </summary>
+        AreYouSureYouWantToValidateThisdividetheseIncorrec = 14506,
+        /// <summary>
+        /// Les trois colonnes doivent être présentes.
+        /// </summary>
+        AllThreeColumnsMustBePresentdot = 14507,
+        /// <summary>
+        /// Association {0} au secteur {1} -> {2}
+        /// </summary>
+        Association0InThe1DepartmentIn2 = 14508,
+        /// <summary>
+        /// Nom usuel : {0}
+        /// </summary>
+        LastName0 = 14509,
+        /// <summary>
+        /// Prénom : {0}
+        /// </summary>
+        FirstName0 = 14510,
+        /// <summary>
+        /// Non classée
+        /// </summary>
+        Unclassified_1 = 14511,
+        /// <summary>
+        /// Type requête
+        /// </summary>
+        RequestType = 14512,
+        /// <summary>
+        /// Url
+        /// </summary>
+        Request_1 = 14513,
+        /// <summary>
+        /// Analyse {0} activée sur l'instrument {1} car il y a un réactif
+        /// </summary>
+        Test0ActivatedOnInstrument1BecauseThereIsAReagent = 14514,
+        /// <summary>
+        /// Analyse {0} inactif temporairement sur l'instrument {1} car le réactif est épuisé
+        /// </summary>
+        Test0TemporarilyInactiveOnInstrument1BecauseNoReag = 14515,
+        /// <summary>
+        /// Ce lot de carte est inconnu. l’association ne sera possible qu’après son ajout
+        /// </summary>
+        ThisLotOfCardIsUnknowndotItWillOnlyBePossibleToLin = 14516,
+        /// <summary>
+        /// Le tube ne peut pas être redirigé car il est dans un emplacement non récupérable ({0)}.
+        /// </summary>
+        SampleCannotBeRoutedBecauseItIsInANonminusretrieva = 14517,
+        /// <summary>
+        /// Le tube peut être redirigé car il est dans un emplacement récupérable ({0)}.
+        /// </summary>
+        SampleCanBeRoutedBecauseItIsInARetrievableLocation = 14518,
+        /// <summary>
+        /// Utilisateur inactif, verrouillé ou mot de passe incorrect
+        /// </summary>
+        InactiveUserLockedUserOrIncorrectPassword = 14519,
+        /// <summary>
+        /// Regroupement impossible : les groupes sanguins des patients sont discordants
+        /// </summary>
+        MergeNotPossibleThePatientsHaveDiscordantBloodGrou = 14520,
+        /// <summary>
+        /// Méthode d’analyse système connecté: {0}
+        /// </summary>
+        TestMethodConnectedSystem0 = 14521,
+        /// <summary>
+        /// Modification de la méthode d'analyse : {0}
+        /// </summary>
+        UpdateTheTestMethod0 = 14522,
+        /// <summary>
+        /// Nouvelle analyse reçue mais il y a un conflit avec une route statique
+        /// </summary>
+        AddminusonTestReceivedButThereIsAConflictDueToASta = 14523,
+        /// <summary>
+        /// Suppression de l'analyse de la liste d'exclusion du blocage : {0}
+        /// </summary>
+        RemovalOfTheTestOfTheBlockingExclusionList0 = 14524,
+        /// <summary>
+        /// Ajout de l'analyse de la liste d'exclusion du blocage : {0}
+        /// </summary>
+        AddedAnalysisOfTheBlockExclusionList0 = 14525,
+        /// <summary>
+        /// Des bornes ou valeurs autorisées sont encore associées au laboratoire
+        /// </summary>
+        RangesOrPossibleValuesAreStillAssociatedWithTheLab = 14526,
+        /// <summary>
+        /// Des bornes ou valeurs autorisées sont encore associées au secteur
+        /// </summary>
+        RangesOrPossibleValuesAreStillAssociatedWithTheDep = 14527,
+    }
 }

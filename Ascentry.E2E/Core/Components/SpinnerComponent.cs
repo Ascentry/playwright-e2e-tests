@@ -12,7 +12,7 @@ namespace Ascentry.E2E.Core.Components
             _page = page;
         }
 
-        public async Task VerifySpinner()
+        public async Task VerifySpinnerAsync()
         {
             var spinner = _page.Locator("byg-spin");
 

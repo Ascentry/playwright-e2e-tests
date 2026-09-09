@@ -11,7 +11,6 @@ namespace Ascentry.E2E.Core.Translations
     {
         private static readonly Dictionary<string, string> _translations;
         private static readonly string _culture;
-        private const string CultureEnvironmentVariable = "PLAYWRIGHT_CULTURE";
 
         static TranslationProvider()
         {
@@ -58,19 +57,20 @@ namespace Ascentry.E2E.Core.Translations
 
         private static string GetCulture()
         {
-            var value = Environment.GetEnvironmentVariable(CultureEnvironmentVariable);
+            string cultureEnvVar = PlaywrightSettings.GetDescription(nameof(PlaywrightSettings.Culture));
+            var culture = Environment.GetEnvironmentVariable(cultureEnvVar);
 
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(culture))
             {
-                value = TestConfiguration.Settings.Culture;
+                culture = TestConfiguration.Settings.Culture;
             }
 
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(culture))
             {
-                value = "fr-FR";
+                culture = "fr-FR";
             }
 
-            return value;
+            return culture;
         }
     }
 }

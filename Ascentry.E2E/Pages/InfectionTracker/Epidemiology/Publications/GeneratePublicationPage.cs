@@ -8,14 +8,16 @@ using Microsoft.Playwright;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Ascentry.E2E.Pages.Publications
+namespace Ascentry.E2E.Pages.InfectionTracker.Epidemiology.Publications
 {
     internal class GeneratePublicationPage : PageBase, IGeneratePublicationPage
     {
+        private readonly SpinnerComponent _spinner;
         private bool _hasSelectedPublication;
 
         public GeneratePublicationPage(IPage page) : base(page)
         {
+            _spinner = new SpinnerComponent(page);
         }
 
         /// <summary>
@@ -33,8 +35,6 @@ namespace Ascentry.E2E.Pages.Publications
             
             var responseTask = Page.WaitForResponseAsync(response =>
             response.Url.Contains("/api/servicebroker/publicationevent/EventsForManualyGeneratedPublication") && response.Status == 200);
-            
-            var spinner = new SpinnerComponent(Page);
             var selectedPublication = Page.Locator("byg-form-select[name='publicationId'] .ng-value-label");
             bool selectedValueChanged = false;            
 
@@ -54,7 +54,7 @@ namespace Ascentry.E2E.Pages.Publications
                 _hasSelectedPublication = false;
                 await Page.ReloadAsync();
 
-                await spinner.VerifySpinner();
+                await _spinner.VerifySpinnerAsync();
             }
 
             if (!_hasSelectedPublication || selectedValueChanged)
@@ -66,7 +66,7 @@ namespace Ascentry.E2E.Pages.Publications
                 await Assertions.Expect(dropdownListOption).ToBeVisibleAsync();
                 await dropdownListOption.ClickAsync();
                 await responseTask;
-                await spinner.VerifySpinner();
+                await _spinner.VerifySpinnerAsync();
             }
 
             if (startDate != null)
@@ -75,7 +75,7 @@ namespace Ascentry.E2E.Pages.Publications
                 await startDateInput.FillAsync(startDate);
                 await Page.Keyboard.PressAsync("Enter");
                 await responseTask;
-                await spinner.VerifySpinner();
+                await _spinner.VerifySpinnerAsync();
             }
 
             if (endDate != null)
@@ -84,13 +84,13 @@ namespace Ascentry.E2E.Pages.Publications
                 await endDateInput.FillAsync(endDate);
                 await Page.Keyboard.PressAsync("Enter");
                 await responseTask;
-                await spinner.VerifySpinner();
+                await _spinner.VerifySpinnerAsync();
 
                 // To force the datepicker to close and launch the request
                 await Page.Keyboard.PressAsync("Tab");
             }
 
-            await spinner.VerifySpinner();
+            await _spinner.VerifySpinnerAsync();
 
             return await BuildRows(eventContextType, eventContextIdentifier, eventName);
         }

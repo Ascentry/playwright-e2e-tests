@@ -1,12 +1,15 @@
 ﻿using Ascentry.E2E.Configurations;
 using Ascentry.E2E.Contracts.Interfaces;
 using Ascentry.E2E.Contracts.Layout;
+using Ascentry.E2E.Contracts.Pages;
 using Ascentry.E2E.Enums;
 using Ascentry.E2E.Navigations.Menus;
 using Ascentry.E2E.Navigations.Urls;
 using Ascentry.E2E.Pages;
-using Ascentry.E2E.Pages.ExpertRules;
-using Ascentry.E2E.Pages.Publications;
+using Ascentry.E2E.Pages.InfectionTracker.Epidemiology.Infections;
+using Ascentry.E2E.Pages.InfectionTracker.Epidemiology.Publications;
+using Ascentry.E2E.Pages.InfectionTracker.ExpertRules;
+using Ascentry.E2E.Pages.InfectionTracker.PatientRecord;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Playwright;
 using System;
@@ -28,12 +31,16 @@ namespace Ascentry.E2E.Testing
         public IGeneratePublicationPage GeneratePublicationPage { get; private set; }
         public IExpertRuleListPage ExpertRuleListPage { get; private set; }
         public IExpertRulePage ExpertRulePage { get; private set; }
+        public IPatientRecordPage PatientRecordPage { get; private set; }
+        public IInfectionMonitoringListPage InfectionMonitoringListPage { get; private set; }
+        public IPrecautionManagementListPage PrecautionManagementListPage { get; private set; }
 
         protected virtual bool HeadLess
         {
             get
             {
-                var value = GetSetting("PLAYWRIGHT_HEADLESS", TestConfiguration.Settings.HeadLess);
+                string envVar = PlaywrightSettings.GetDescription(nameof(PlaywrightSettings.HeadLess));
+                string value = GetSetting(envVar, TestConfiguration.Settings.HeadLess);
 
                 if (bool.TryParse(value, out bool result))
                 {
@@ -48,7 +55,8 @@ namespace Ascentry.E2E.Testing
         {
             get
             {
-                var value = GetSetting("PLAYWRIGHT_SLOWMO", TestConfiguration.Settings.SlowMo);
+                string envVar = PlaywrightSettings.GetDescription(nameof(PlaywrightSettings.SlowMo));
+                string value = GetSetting(envVar, TestConfiguration.Settings.SlowMo);
 
                 if (int.TryParse(value, out int result))
                 {
@@ -59,9 +67,23 @@ namespace Ascentry.E2E.Testing
             }
         }
 
-        protected virtual string UserName => GetSetting("PLAYWRIGHT_USERNAME", TestConfiguration.Settings.UserName);
+        protected virtual string UserName
+        {
+            get
+            {
+                string envVar = PlaywrightSettings.GetDescription(nameof(PlaywrightSettings.UserName));
+                return GetSetting(envVar, TestConfiguration.Settings.UserName);
+            }
+        }
 
-        private string Password => GetSetting("PLAYWRIGHT_PASSWORD", TestConfiguration.Settings.Password);
+        private static string Password
+        {
+            get
+            {
+                string envVar = PlaywrightSettings.GetDescription(nameof(PlaywrightSettings.Password));
+                return GetSetting(envVar, TestConfiguration.Settings.Password);
+            }
+        }
 
         /// <summary>
         /// Appelé une seule fois lors de l'initialisation de la fixture
@@ -95,6 +117,9 @@ namespace Ascentry.E2E.Testing
             GeneratePublicationPage = new GeneratePublicationPage(_page);
             ExpertRuleListPage = new ExpertRuleListPage(_page);
             ExpertRulePage = new ExpertRulePage(_page);
+            PatientRecordPage = new PatientRecordPage(_page);
+            InfectionMonitoringListPage = new InfectionMonitoringListPage(_page);
+            PrecautionManagementListPage = new PrecautionManagementListPage(_page);
 
             await LoginUser();
         }

@@ -4,7 +4,7 @@ using Ascentry.E2E.Navigations.Urls;
 using Microsoft.Playwright;
 using System.Threading.Tasks;
 
-namespace Ascentry.E2E.Pages.ExpertRules
+namespace Ascentry.E2E.Pages.InfectionTracker.ExpertRules
 {
     internal class ExpertRuleListPage : PageBase, IExpertRuleListPage
     {

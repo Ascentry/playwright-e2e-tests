@@ -34,5 +34,17 @@ namespace Ascentry.E2E.Navigations.Menus
             }
         }
 
+        public static class Patient
+        {
+            public static class RecordsManagement
+            {
+                private const TranslationEnum root = TranslationEnum.Patient_2;
+                public static readonly List<MenuNode> PatientRecord = [
+                   new MenuNode(MenuLevelEnum.First, root),
+                   new MenuNode(MenuLevelEnum.Second, TranslationEnum.PatientRecord)
+                ];
+            }
+        }
+
     }
 }
