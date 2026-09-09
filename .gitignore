@@ -1,0 +1,19 @@
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Résultats de tests
+TestResults/
+
+# Playwright
+playwright-report/
+test-results/

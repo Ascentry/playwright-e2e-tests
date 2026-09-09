@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Ascentry.E2E.Contracts/Ascentry.E2E.Contracts.csproj" Id="03e3baef-56a8-4512-b05b-77eb460f5bba" />
+  <Project Path="Ascentry.E2E.Tests/Ascentry.E2E.Tests.csproj" />
+  <Project Path="Ascentry.E2E/Ascentry.E2E.csproj" />
+</Solution>

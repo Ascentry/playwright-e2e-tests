@@ -1,0 +1,8 @@
+{
+  "Playwright": {
+    "HeadLess": false,
+    "Product": "InfectionTracker",
+    "RootUrl": "http://localhost:4200",
+    "SlowMo": 0
+  }
+}
