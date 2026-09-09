@@ -1,11 +1,15 @@
 ﻿using Ascentry.E2E.Contracts.Enums;
 using Ascentry.E2E.Contracts.ExpertRules;
 using Ascentry.E2E.Navigations.Menus;
+using Ascentry.E2E.Testing;
 
 namespace InfectionTracker.E2E.Tests.ExpertRules
 {
-    public class ExpertRuleTests: AbstractTestBase
+    public class ExpertRuleTests : AscentryTestBase, IClassFixture<AscentryFixture>
     {
+
+        public ExpertRuleTests(AscentryFixture fixture) : base(fixture) { }
+
 
         [Fact(DisplayName = "Execute an expert rule in test mode - Success - one row with one condition with one instruction")]
         public async Task Should_Execute_Test_Mode_One_Row_One_Condition_One_Instruction()

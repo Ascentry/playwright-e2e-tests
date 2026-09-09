@@ -1,16 +1,18 @@
-﻿using Ascentry.E2E.Tests.Attributes;
-using Ascentry.E2E.Contracts.Enums;
+﻿using Ascentry.E2E.Contracts.Enums;
 using Ascentry.E2E.Contracts.ExpertRules;
-using Xunit;
 using Ascentry.E2E.Navigations.Menus;
+using Ascentry.E2E.Testing;
+using Ascentry.E2E.Tests.Attributes;
+using Xunit;
 
 namespace Ascentry.E2E.Tests.Sandbox
 {
     // Faire en sorte d'utiliser la même instance Playwright et le même context et même connexion pour les 100 scénarios de tests
     // Utilisation du spinner pour vérifier l'état de la page
     [Products(ProductEnum.InfectionTracker)]
-    public class ExpertRuleSandboxTests : AbstractTestBase
+    public class ExpertRuleSandboxTests : AscentryTestBase, IClassFixture<AscentryFixture>
     {
+        public ExpertRuleSandboxTests(AscentryFixture fixture) : base(fixture) { }
 
         [Fact(DisplayName = "Execute an expert rule in test mode - Success - one row with one condition with one instruction")]
         public async Task Should_Execute_Test_Mode_One_Row_One_Condition_One_Instruction()

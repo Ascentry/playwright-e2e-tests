@@ -1,6 +1,7 @@
 ﻿using Ascentry.E2E.Contracts.Enums;
 using Ascentry.E2E.Contracts.Interfaces;
 using Ascentry.E2E.Contracts.Publications;
+using Ascentry.E2E.Core.Components;
 using Ascentry.E2E.Enums;
 using Ascentry.E2E.Navigations.Urls;
 using Microsoft.Playwright;
@@ -11,6 +12,8 @@ namespace Ascentry.E2E.Pages.Publications
 {
     internal class GeneratePublicationPage : PageBase, IGeneratePublicationPage
     {
+        private bool _hasSelectedPublication;
+
         public GeneratePublicationPage(IPage page) : base(page)
         {
         }
@@ -27,18 +30,44 @@ namespace Ascentry.E2E.Pages.Publications
         /// <returns>List of the event details that correspond to the filter parameters</returns>
         public async Task<List<PublicationEventDetailsRow>> GetPublicationEventRows(PublicationEventContextTypeEnum eventContextType, string publicationName, string eventContextIdentifier, string eventName = null, string startDate = null, string endDate = null)
         {
-            await Page.WaitForURLAsync(UrlProvider.Get(RouteKeyEnum.GeneratePublication));
+            
             var responseTask = Page.WaitForResponseAsync(response =>
             response.Url.Contains("/api/servicebroker/publicationevent/EventsForManualyGeneratedPublication") && response.Status == 200);
+            
+            var spinner = new SpinnerComponent(Page);
+            var selectedPublication = Page.Locator("byg-form-select[name='publicationId'] .ng-value-label");
+            bool selectedValueChanged = false;            
 
-            var select = Page.Locator("byg-form-select[name='publicationId'] div.ng-select-container");
+            if (selectedPublication != null)
+            {
+                _hasSelectedPublication = await selectedPublication.IsVisibleAsync();
+            }
 
-            await select.ClickAsync();
-            var dropdownListOption = Page.Locator("byg-form-select[name='publicationId'] div.custom-option").Filter(new() { HasTextString = publicationName });
+            if (_hasSelectedPublication)
+            {
+                string selectedValue = await selectedPublication?.InnerTextAsync();
+                selectedValueChanged = !selectedValue.Equals(publicationName);
+            }
 
-            await Assertions.Expect(dropdownListOption).ToBeVisibleAsync();
-            await dropdownListOption.ClickAsync();
-            await responseTask;
+            if ((_hasSelectedPublication || !selectedValueChanged) && (startDate == null || endDate == null))
+            {
+                _hasSelectedPublication = false;
+                await Page.ReloadAsync();
+
+                await spinner.VerifySpinner();
+            }
+
+            if (!_hasSelectedPublication || selectedValueChanged)
+            {
+                var select = Page.Locator("byg-form-select[name='publicationId'] div.ng-select-container");
+                await select.ClickAsync();
+                var dropdownListOption = Page.Locator("byg-form-select[name='publicationId'] div.custom-option").Filter(new() { HasTextString = publicationName });
+
+                await Assertions.Expect(dropdownListOption).ToBeVisibleAsync();
+                await dropdownListOption.ClickAsync();
+                await responseTask;
+                await spinner.VerifySpinner();
+            }
 
             if (startDate != null)
             {
@@ -46,6 +75,7 @@ namespace Ascentry.E2E.Pages.Publications
                 await startDateInput.FillAsync(startDate);
                 await Page.Keyboard.PressAsync("Enter");
                 await responseTask;
+                await spinner.VerifySpinner();
             }
 
             if (endDate != null)
@@ -54,10 +84,13 @@ namespace Ascentry.E2E.Pages.Publications
                 await endDateInput.FillAsync(endDate);
                 await Page.Keyboard.PressAsync("Enter");
                 await responseTask;
+                await spinner.VerifySpinner();
 
                 // To force the datepicker to close and launch the request
                 await Page.Keyboard.PressAsync("Tab");
             }
+
+            await spinner.VerifySpinner();
 
             return await BuildRows(eventContextType, eventContextIdentifier, eventName);
         }
@@ -70,7 +103,7 @@ namespace Ascentry.E2E.Pages.Publications
             var eventDetailsRows = new List<ILocator>(rowCount);
 
             // Wait for the results to load in the table
-            await rowElements.First.WaitForAsync();
+            await rowElements.Last.WaitForAsync();
 
             if (eventContextType == PublicationEventContextTypeEnum.ORU)
             {
